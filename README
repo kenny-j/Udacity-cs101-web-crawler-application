@@ -1,3 +1,18 @@
-This is the web-crawler script built in the inaugural cs101 class at Udacity, and augemented into a simple application to run on your local machine, and posted to the Udacity forum by kjsdrum here: http://www.udacity-forums.com/cs101/questions/42450/run-cs101-web-crawler-as-an-application-rev-20 
+This is the web-crawler script built in the inaugural cs101 class at Udacity, and augemented into a simple application to run on your local machine, and posted to the Udacity forum by jksdrum here: http://www.udacity-forums.com/cs101/questions/42450/run-cs101-web-crawler-as-an-application-rev-20 
+
+It should be noted that the original and current version ignore robot.txt files and thus should be used cautiously, if at all, to search the open web. 
+
+
+Change Log
+
+2012 - April 14:
+			Initial commit of file as found on the original Udacity forum posting of jksdrum
+			second commit by Ken Jepson aka Kenny-J fixes .format statements so they are compatible with the osx version of python 2.7.x by including reference numbers inside the {} in print commands. 
+
+For example:
+-                    print "    Crawl finished.  Index has {0} items.".format(len(index))
++                    print "    Crawl finished.  Index has {} items.".format(len(index))
+
+
 
 

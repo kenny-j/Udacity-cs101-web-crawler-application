@@ -193,16 +193,16 @@ if __name__ == "__main__":
                 try:
                     size2 = os.path.getsize(path)
                     os.remove(path)
-                    ret += "        Deleted {} ({} bytes)\n".format(path,size2)
+                    ret += "        Deleted {0} ({1} bytes)\n".format(path,size2)
                 except:
-                    ret += "        Failed to delete {}\n".format(path)
+                    ret += "        Failed to delete {0}\n".format(path)
                 print ret
         def clear_data(data,data_str,path):
             ret = ''
             delete_file(path)
             length = len(data)
             data.clear()
-            ret += "        Cleared {} entries from {}\n".format(length,data_str)
+            ret += "        Cleared {0} entries from {1}\n".format(length,data_str)
             print ret
             return data
         def open_file(data,data_str,path):
@@ -214,19 +214,19 @@ if __name__ == "__main__":
                     pickle.dump(data,file)
                 except:
                     fail += 1
-                    ret += "        Failed to save {} to {}\n".format(data_str,path)
+                    ret += "        Failed to save {0} to {1}\n".format(data_str,path)
                 try:
                     size = os.path.getsize(path)
                 except:
                     size = 0
                     fail += 1
-                    ret += "        Failed to get the size of {}\n".format(path)
+                    ret += "        Failed to get the size of {0}\n".format(path)
                 if fail == 0:
-                    ret += "        {} was saved to {} ({} bytes)\n".format(data_str,path,size)
-                    ret += "        {} contains {} entries.\n".format(data_str,len(data))
+                    ret += "        {0} was saved to {1} ({2} bytes)\n".format(data_str,path,size)
+                    ret += "        {0} contains {1} entries.\n".format(data_str,len(data))
                 file.close()
             else:
-                ret += "        Failed to open {} at {}\n".format(data_str,path)
+                ret += "        Failed to open {0} at {1}\n".format(data_str,path)
             print ret
         def load_file(data,data_str,path):
             ret = ""
@@ -236,22 +236,22 @@ if __name__ == "__main__":
                     try:
                         data = pickle.load(file1)
                         size1 = os.path.getsize(path)
-                        ret += "        Loaded {} from {} ({} bytes)\n".format(data_str,path,size1)
-                        ret += "        {} contains {} entries.\n".format(data_str,len(data))
+                        ret += "        Loaded {0} from {1} ({2} bytes)\n".format(data_str,path,size1)
+                        ret += "        {0} contains {1} entries.\n".format(data_str,len(data))
                     except:
                         size1 = 0
-                        ret += "        Failed to load {} from {}\n".format(data_str,path)
+                        ret += "        Failed to load {0} from {1}\n".format(data_str,path)
                 else:
-                    ret += "        Failed to open {}\n".format(path)
+                    ret += "        Failed to open {0}\n".format(path)
             else:
-                ret += "        {} does not exist\n".format(path)
+                ret += "        {0} does not exist\n".format(path)
             print ret
             return data
         def execute_cmd(c,index,graph, ranks, searches):
                 if c == '1':
                     index, graph = execute_start_crawl(index)
                     ranks = compute_ranks(graph)
-                    print "    Crawl finished.  Index has {0} items.".format(len(index))
+                    print "    Crawl finished.  Index has {} items.".format(len(index))
                     raw_input("    Press Enter")
                     print ""
                 elif c == '2':
@@ -263,10 +263,10 @@ if __name__ == "__main__":
                     for i, e in enumerate(index):
                         if i >= maxentries:
                             break
-                        print "        Entry {}:".format(i)
-                        print "            '{}' appears in the following urls:".format(e)
+                        print "        Entry {0}:".format(i)
+                        print "            '{0}' appears in the following urls:".format(e)
                         for u in index[e]:
-                            print "                {}".format(u)
+                            print "                {0}".format(u)
                     if len(index) == 0:
                         print "        Index is empty"
                     raw_input("    Press Enter")
@@ -297,11 +297,11 @@ if __name__ == "__main__":
                         ranks = compute_ranks(graph)
                     l = lookup_best(index, w, ranks)
                     if len(l) == 0:
-                        ret = "        {} was not found in index".format(w)
+                        ret = "        {0} was not found in index".format(w)
                     else:
-                        ret += "        '{}' appears in the following urls:\n".format(w)
+                        ret += "        '{0}' appears in the following urls:\n".format(w)
                         for e in l:
-                            ret += "            {}\n            score = {}\n".format(e[1],e[0])
+                            ret += "            {0}\n            score = {1}\n".format(e[1],e[0])
                     searches.append(w)
                     is_trending = {}
                     if len(searches) == GLOBAL_NUM_SEARCHES:
@@ -311,7 +311,7 @@ if __name__ == "__main__":
                     if len(is_trending) > 0:
                         ret += "        The following are trending:\n"
                         for word in is_trending:
-                            ret += "            '{}'\n".format(word)
+                            ret += "            '{0}'\n".format(word)
                     print ret
                     raw_input("    Press Enter")
                     print ""
